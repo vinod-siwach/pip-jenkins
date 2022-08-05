@@ -8,7 +8,7 @@ pipeline{
             steps{
                 // mvn test
                 sh "mvn --version"
-                sh "mvn test"
+                // sh "mvn test"
             }
         }
         stage("build"){
