@@ -8,7 +8,7 @@ pipeline{
             steps{
                 // mvn test
                 sh "mvn --version"
-                // sh "mvn test"
+                sh "mvn test"
             }
         }
         stage("build"){
@@ -24,6 +24,10 @@ pipeline{
             }
         }
         stage("deploy on prod"){
+            input {
+                message "can we continue"
+                ok "yes"
+            }
             steps{
                 // deploy on containor -->plugin
                 deploy adapters: [tomcat9(credentialsId: 'tomcatdetailsserver1', path: '', url: 'http://13.233.18.172:8080')], contextPath: '/app', war: '**/*.war'
